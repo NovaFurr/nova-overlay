@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>nova@novafurr.gay</email>
+    <name>Barna Tamás</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="homepage">https://www.kernel.org/</remote-id>
+  </upstream>
+  <longdescription>
+    Upstream kernel.org Linux sources with a locally supplied .config.
+  </longdescription>
+</pkgmetadata>
