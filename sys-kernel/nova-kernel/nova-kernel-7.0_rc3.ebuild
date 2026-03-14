@@ -1,4 +1,4 @@
-# Copyright 2026
+# Copyright 2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -19,11 +19,75 @@ SRC_URI="https://git.kernel.org/torvalds/t/${MY_P}.tar.gz"
 S="${WORKDIR}/${MY_P}"
 
 # Optional but nice
-DEPEND="sys-devel/bc
-        sys-devel/flex
-        sys-devel/bison
-        dev-libs/openssl:=
-        sys-libs/zlib"
+DEPEND="app-alternatives/awk
+        app-alternatives/bc
+		app-alternatives/cpio
+		app-alternatives/gpg
+		app-alternatives/gzip
+		app-alternatives/sh
+		app-arch/bzip2
+		app-arch/gzip
+		app-arch/lz4
+		app-arch/tar
+		app-arch/xz-utils
+		app-arch/zstd
+		app-crypt/argon2
+		app-crypt/gnupg
+		app-crypt/p11-kit
+		app-crypt/sbsigntools
+		app-crypt/tpm2-tools
+		app-crypt/tpm2-tss
+		app-misc/ddcutil
+		app-misc/jq
+		app-shells/bash
+		dev-lang/perl
+		dev-lang/python
+		dev-libs/glib
+		dev-libs/expat
+		dev-libs/libevent
+		dev-libs/libgpg-error
+		dev-libs/libgcrypt
+		dev-libs/libusb
+		dev-libs/lzo
+		dev-libs/npth
+		dev-libs/nss
+		dev-libs/opensc
+		dev-libs/openssl
+		dev-libs/userspace-rcu
+		net-fs/nfs-utils
+		net-fs/cifs-utils
+		net-fs/samba
+		net-libs/nghttp2
+		net-misc/curl
+		net-misc/networkmanager
+		net-wireless/bluez
+		sec-keys/openpgp-keys-kernel
+		sys-apps/coreutils
+		sys-apps/dbus
+		sys-apps/fwupd
+		sys-apps/gawk
+		sys-apps/iproute2
+		sys-apps/keyutils
+		sys-apps/kmod
+		sys-apps/less
+		sys-apps/nvme-cli
+		sys-apps/pcsc-lite
+		sys-apps/rng-tools
+		sys-apps/sed
+		sys-apps/shadow
+		sys-apps/util-linux
+		sys-auth/polkit
+		sys-devel/gcc
+		sys-fs/cryptsetup
+		sys-fs/dosfstools
+		sys-kernel/dracut
+		sys-libs/glibc
+		sys-libs/libapparmor
+		sys-libs/libnvme
+		sys-libs/pam
+		sys-libs/ncurses
+		sys-process/procps
+		x11-libs/libdrm"
 RDEPEND=""
 BDEPEND="${DEPEND}"
 
