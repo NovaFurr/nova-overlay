@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DESCRIPTION="Linux 7.0-rc3 built from upstream sources with local config"
+DESCRIPTION="Linux 7.0-rc5 built from upstream sources with local config (v2)"
 HOMEPAGE="https://git.kernel.org/ https://www.kernel.org/"
 
 LICENSE="GPL-2"
@@ -31,19 +31,13 @@ DEPEND="app-alternatives/awk
 		app-arch/tar
 		app-arch/xz-utils
 		app-arch/zstd
-		app-crypt/argon2
 		app-crypt/gnupg
-		app-crypt/p11-kit
-		app-crypt/sbsigntools
-		app-crypt/tpm2-tools
-		app-crypt/tpm2-tss
 		app-misc/ddcutil
 		app-misc/jq
 		app-shells/bash
 		dev-lang/perl
 		dev-lang/python
 		dev-libs/glib
-		dev-libs/expat
 		dev-libs/libevent
 		dev-libs/libgpg-error
 		dev-libs/libgcrypt
@@ -54,37 +48,17 @@ DEPEND="app-alternatives/awk
 		dev-libs/opensc
 		dev-libs/openssl
 		dev-libs/userspace-rcu
-		net-fs/nfs-utils
-		net-fs/cifs-utils
-		net-fs/samba
-		net-libs/nghttp2
 		net-misc/curl
-		net-misc/networkmanager
-		net-wireless/bluez
 		sec-keys/openpgp-keys-kernel
 		sys-apps/coreutils
-		sys-apps/dbus
 		sys-apps/fwupd
 		sys-apps/gawk
-		sys-apps/iproute2
-		sys-apps/keyutils
-		sys-apps/kmod
-		sys-apps/less
-		sys-apps/nvme-cli
-		sys-apps/pcsc-lite
-		sys-apps/rng-tools
 		sys-apps/sed
 		sys-apps/shadow
 		sys-apps/util-linux
-		sys-auth/polkit
 		sys-devel/gcc
-		sys-fs/cryptsetup
-		sys-fs/dosfstools
 		sys-kernel/dracut
 		sys-libs/glibc
-		sys-libs/libapparmor
-		sys-libs/libnvme
-		sys-libs/pam
 		sys-libs/ncurses
 		sys-process/procps
 		x11-libs/libdrm"
@@ -96,7 +70,7 @@ KERNEL_ARCH="x86"
 src_prepare() {
     default
 
-    cp "${FILESDIR}/kernel.config" "${S}/.config" || die "failed to copy kernel config"
+    cp "${FILESDIR}/7_rc5.config" "${S}/.config" || die "failed to copy kernel config"
 }
 
 src_compile() {
@@ -111,6 +85,7 @@ src_install() {
 
 	# Install modules into the image root
 	emake ARCH="${KERNEL_ARCH}" INSTALL_MOD_PATH="${D}" modules_install || die "modules_install failed"
+
 
 	# Install kernel + metadata into /boot
 	insinto /boot
@@ -130,5 +105,14 @@ pkg_postinst() {
 	elog "  System.map-*"
 	elog "  config-*"
 	elog
-	elog "You should update your booloader."
+	elog "You still need to update your bootloader."
+	elog "Feel free to report any bugs, i will try to fix them"
+
 }
+
+
+# TODO: move to kernel-build.eclass
+# This is a mess that barely works, but it works, somehow
+# Please don't judge me too hard on this, i will improve in the future
+# Feel free to fork
+# I am a student, so i don't have the most time to work on this repo :(
